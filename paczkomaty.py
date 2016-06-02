@@ -31,7 +31,8 @@ def get_status(pkg_id):
     #                              '-H', 'Origin: https://twoj.inpost.pl'])
     s = requests.get(url, headers={'Origin': 'https://twoj.inpost.pl'}).text
     j = json.loads(s)
-    return j['history'][j['history'].keys()[-1]]['pl']
+    last_history_key = [j['history'].keys()[-1]]
+    return j['history'][last_history_key]['pl']
 
 if __name__ == '__main__':
     package_no = sys.argv[1]
