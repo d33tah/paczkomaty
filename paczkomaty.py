@@ -31,7 +31,7 @@ def get_status(pkg_id):
     #                              '-H', 'Origin: https://twoj.inpost.pl'])
     s = requests.get(url, headers={'Origin': 'https://twoj.inpost.pl'}).text
     j = json.loads(s)
-    last_history_key = [j['history'].keys()[-1]]
+    last_history_key = sorted(j['history'].keys())[-1]
     return j['history'][last_history_key]['pl']
 
 if __name__ == '__main__':
